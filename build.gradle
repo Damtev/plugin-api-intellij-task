@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.71'
+    id 'antlr'
+}
+
+group 'org.jetbrains.array.operations'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation group: 'org.antlr', name: 'antlr4', version: '4.8'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    antlr "org.antlr:antlr4:4.8"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+generateGrammarSource {
+    arguments << '-lib' << 'src/main/antlr/org/jetbrains/array/operations'
+    outputDirectory = new File('src/main/java')
+}

@@ -1,0 +1,1 @@
+map{element}%>%map{(-51 + (element - 84))}%>%map{(((-81 * element) - -51) - element)}
